@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const AppartmentCard = ({ appartment }) => {
 
-    const { img, floorNo, blockName, Block, apartmentNo, _id } = appartment;
+    const { img, floorNo, blockName,  apartmentNo, _id } = appartment;
 
 
     const { user } = useContext(AuthContext)
@@ -23,7 +23,7 @@ const AppartmentCard = ({ appartment }) => {
                 floorNo, blockName, apartmentNo,img
             }
 
-            axios.post('http://localhost:5000/agreement', agreeItem)
+            axios.post('https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/agreement', agreeItem)
             .then(res => {
                 console.log(res.data);
                 if(res.data.insertedId){
@@ -57,12 +57,11 @@ const AppartmentCard = ({ appartment }) => {
             <div className="card  bg-base-100 shadow-xl">
                 <figure><img className="h-[350px]" src={img} alt="Shoes" /></figure>
                 <div className="card-body">
-                    <h2 className="card-title">{floorNo}</h2>
-                    <p>{blockName}</p>
-                    <p>{Block}</p>
-                    <p>{apartmentNo}</p>
-                    <div className="card-actions justify-end">
-                        <button onClick={handleAgreement} className="btn btn-primary">Agreement</button>
+                    <h2 className="card-title">Appartment No : {apartmentNo}</h2>
+                    <p>Block : {blockName}</p>
+                    <p>Floor No : {floorNo}</p>
+                    <div className="card-actions justify-center">
+                        <button onClick={handleAgreement} className="btn btn-outline">Agreement</button>
                     </div>
                 </div>
             </div>

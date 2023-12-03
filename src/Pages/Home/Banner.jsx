@@ -9,7 +9,7 @@ import img4 from '../../assets/pexels-photomix-company-565324.jpg'
 
 const Banner = () => {
     return (
-        <div className="my-12">
+        <div className="mb-12">
 
             <Carousel className="text-center">
                 <div>

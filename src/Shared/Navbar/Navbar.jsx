@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 // import logo from "../../assets/images/logo.png"
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvieder/AuthProvider";
-
+import logo from '../../assets/logo.avif'
 
  
 
@@ -43,7 +43,7 @@ const Navbar = () => {
               
             </ul>
           </div>
-          <a className="normal-case text-xl">Building Management </a>
+          <a className="normal-case text-xl"><img className="w-[120px] h-[100px]" src={logo} alt="" /> </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -65,7 +65,7 @@ const Navbar = () => {
                             </label>
                             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                                 <li>
-                                     <NavLink to={'/dashboard'}className="btn btn-sm btn-ghost">Dashboard</NavLink>
+                                     <NavLink to={'/dashboard/profile'}className="btn btn-sm btn-ghost">Dashboard</NavLink>
                                 </li>
                                 <li>
                                     <button className="btn btn-sm  btn-ghost">{user.displayName}</button>
