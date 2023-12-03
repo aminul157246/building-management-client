@@ -1,6 +1,11 @@
 
+
+
+import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
+
+
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import toast from 'react-hot-toast';
 import LoginWithGoogle from './LoginWithGoogle';
 import { AuthContext } from '../../AuthProvieder/AuthProvider';
@@ -8,8 +13,40 @@ import { AuthContext } from '../../AuthProvieder/AuthProvider';
 const Login = () => {
 
 
+
+    const captchaRef = useRef(null)
+    console.log(captchaRef);
+
+
+    const [disable, setDisable ] = useState(true)
+
+
+
+
+    useEffect(() => {
+        loadCaptchaEnginge(6);
+    },[])
+
+    const handleCaptcha = () => {
+         const user_captcha_value = captchaRef.current.value;
+         if(validateCaptcha(user_captcha_value)){
+             setDisable(false)
+         }
+         else{
+            setDisable(true)
+         }
+    }
+
+
     const location = useLocation()
+    // const from = location.state?.from?.pathname || '/'
     console.log(location.pathname);
+
+
+
+
+
+
 
     const {login} = useContext(AuthContext)
 
@@ -62,8 +99,19 @@ const Login = () => {
                               <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                           </label>
                       </div>
+
+                      <div className="form-control">
+                          <label className="label">
+                          <LoadCanvasTemplate />
+                          </label>
+                          <input ref={captchaRef} type="text" placeholder="Fill the captcha" className="input input-bordered"   />
+                          <button onClick={handleCaptcha} className="btn btn-xs mt-2">Validate</button>
+                          
+                      </div>
+
+
                       <div className="form-control mt-6 p-0">
-                          <button type='submit' className="btn btn-neutral">Login</button>
+                          <button disabled ={disable} type='submit' className="btn btn-neutral">Login</button>
                       </div>
                       <label className="label">
                            Do not have an account? <Link to="/registration" className="text-blue-700 underline">create an account</Link>

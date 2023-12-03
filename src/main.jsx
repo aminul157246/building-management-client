@@ -26,9 +26,11 @@ const router = createBrowserRouter([
         loader : () => fetch('http://localhost:5000/appartment')
 
       },
+      
       {
         path : '/apartment',
-        element : <Apartment></Apartment>
+        element : <Apartment></Apartment>,
+        loader : () => fetch('http://localhost:5000/agreement')
       },
       {
         path : '/login',
@@ -49,9 +51,11 @@ const router = createBrowserRouter([
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <div className='max-w-7xl mx-auto'>
+    <React.StrictMode>
     <AuthProvider>
     <RouterProvider router={router} />
     </AuthProvider>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </div>
 )
