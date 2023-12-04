@@ -23,7 +23,7 @@ const AppartmentCard = ({ appartment }) => {
                 floorNo, blockName, apartmentNo,img
             }
 
-            axios.post('https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/agreement', agreeItem)
+            axios.post('https://building-management-server-alpha.vercel.app/appartment/agreement', agreeItem)
             .then(res => {
                 console.log(res.data);
                 if(res.data.insertedId){
@@ -54,8 +54,8 @@ const AppartmentCard = ({ appartment }) => {
 
     return (
         <div>
-            <div className="card  bg-base-100 shadow-xl">
-                <figure><img className="h-[350px]" src={img} alt="Shoes" /></figure>
+            <div className="card   bg-base-100 shadow-xl">
+                <figure><img className="h-[350px] p-6 w-full" src={img} alt="Shoes" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">Appartment No : {apartmentNo}</h2>
                     <p>Block : {blockName}</p>

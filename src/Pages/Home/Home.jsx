@@ -18,13 +18,21 @@ const Home = () => {
     const [itemsPerPage, setItemsPerPage] = useState(6)
     const [currentPage, setCurrentPage] = useState(0)
     const numberPerPages = Math.ceil(appartments.length / itemsPerPage)
+    
 
-    const pages = [...Array(numberPerPages).keys()]
-    console.log(pages);
+     // const pages = [...Array(numberPerPages).keys()]
+    // console.log('pages',pages);
+
+    const pages = []
+    for(let i = 0 ; i<numberPerPages ; i++){
+        pages.push(i)
+    }
+    console.log('pages',pages);
+
 
 
     useEffect(() => {
-        fetch(`https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/appartment?page=${currentPage}&size=${itemsPerPage}`)
+        fetch(`https://building-management-server-alpha.vercel.app/appartment?page=${currentPage}&size=${itemsPerPage}`)
             .then(res => res.json())
             .then(data => setAppartments(data))
 
@@ -54,20 +62,11 @@ const Home = () => {
 
 
 
-
-
-
-
-
-
-
-
-
     return (
         <div>
             <Banner></Banner>
             <Details></Details>
-            <div className='grid grid-cols-3 gap-6'>
+            <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
                     appartments.map(appartment => <AppartmentCard appartment={appartment} key={appartment._id}></AppartmentCard>)
                 }

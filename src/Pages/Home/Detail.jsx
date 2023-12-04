@@ -10,7 +10,7 @@ const Detail = ({detail}) => {
 
     return (
         <div className="   hover:opacity-80 my-12">
-        <figure><img className="h-[220px]"  src={img} alt="car!"/></figure>
+        <figure><img className="h-[220px] w-full p-6"  src={img} alt="car!"/></figure>
         <h1 className='text-xl text-center font-bold'>{appartmentName}</h1>
         
           <div className="card-actions justify-center ">

@@ -21,6 +21,22 @@ import SingleDetail from './Pages/Home/SingleDetail';
 
 
 
+
+
+
+import {
+  QueryClient,
+  QueryClientProvider,
+
+} from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
+
+
+
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -35,7 +51,7 @@ const router = createBrowserRouter([
       {
         path : '/apartment',
         element : <Apartment></Apartment>,
-        loader : () => fetch('https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/agreement')
+        // loader : () => fetch('https://building-management-server-alpha.vercel.app/appartment')
       },
       {
         path : '/login',
@@ -49,7 +65,7 @@ const router = createBrowserRouter([
       {
         path : '/details/:id',
         element : <SingleDetail></SingleDetail>,
-        // loader : ({params}) => fetch(`https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/details/${params.id}`)
+        // loader : ({params}) => fetch(`https://building-management-server-alpha.vercel.app/appartment/details/${params.id}`)
       },
       {
         path : '/registration',
@@ -85,9 +101,11 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div className='max-w-7xl mx-auto'>
     <React.StrictMode>
+    <QueryClientProvider client={queryClient}>
     <AuthProvider>
     <RouterProvider router={router} />
     </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
   </div>
 )

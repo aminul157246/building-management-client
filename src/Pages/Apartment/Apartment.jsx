@@ -1,9 +1,27 @@
-import { useLoaderData } from "react-router-dom";
+
+
+import { useQuery } from "@tanstack/react-query";
 
 const Apartment = () => {
 
-    const appartments = useLoaderData()
-    console.log(appartments);
+
+    const {isPending,data : appartments } = useQuery({
+        queryKey : ['users'], 
+        queryFn : async () => {
+            const res = await fetch(`https://building-management-server-alpha.vercel.app/appartment`)
+            return res.json()
+        }
+    })
+
+
+    if(isPending){
+        return <div className="flex justify-center items-center">
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    }
+
+
+
     return (
         <div >
             {

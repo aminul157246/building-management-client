@@ -10,8 +10,8 @@ const PerfectHome = () => {
         <div className="my-12" >
             <h2 className="text-4xl ">How It works? <br />
 Find a perfect home</h2>
-<div className="grid grid-cols-4 gap-4  mt-8 space-y-2">
-    <div className="border-r-2 space-y-2">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 p-10 md:p-0 lg:p-0 gap-4  mt-8 space-y-2">
+    <div className="md:border-r-2 space-y-2">
         <FaHome className="text-4xl "></FaHome >
         <h4 className="font-bold">Find real estate</h4>
         <p>Sumo petentium ut per, at his wisim utinam adipiscing. Est ei graeco quod suavitate vix.</p>

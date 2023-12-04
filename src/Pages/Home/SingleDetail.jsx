@@ -1,18 +1,32 @@
-import { useEffect } from "react";
-import { useState } from "react";
+
 import { useParams } from "react-router-dom";
 import { FaLocationDot } from "react-icons/fa6";
+import { useQuery } from "@tanstack/react-query";
 const SingleDetail = () => {
 
-    const [det, setDet] = useState([])
+
     const { id } = useParams()
     console.log(id);
 
-    useEffect(() => {
-        fetch(`https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/details/${id}`)
-            .then(res => res.json())
-            .then(data => setDet(data))
-    }, [id])
+
+
+    const { isPending, data: det } = useQuery({
+        queryKey: ['detail'],
+        queryFn: async () => {
+            const res = await fetch(`https://building-management-server-alpha.vercel.app/details/${id}`)
+            return res.json();
+        }
+    })
+
+
+    if (isPending) {
+        return <div className="flex justify-center items-center">
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    }
+
+
+
 
 
     console.log(det);

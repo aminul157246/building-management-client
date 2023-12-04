@@ -1,23 +1,32 @@
 
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useQuery } from '@tanstack/react-query';
 import Detail from './Detail';
 const Details = () => {
 
-    const [details, setDetails] = useState([])
-    useEffect(()=> {
-        fetch('https://building-management-server-abldegp2t-aminul-islams-projects.vercel.app/appartment/details')
-        .then(res => res.json())
-        .then(data => setDetails(data))
-    },[])
+    
 
-    console.log('details',details);
+
+    const {isPending,data : details } = useQuery({
+        queryKey : ['detail'], 
+        queryFn : async () => {
+            const res = await fetch(`https://building-management-server-alpha.vercel.app/details`)
+            return res.json();
+        }
+    })
+
+
+    if(isPending){
+        return <div className="flex justify-center items-center">
+            <span className="loading loading-bars loading-lg"></span>
+        </div>
+    }
+
 
 
 
     return (
       
-           <div className='grid grid-cols-4 gap-5'>
+           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
             {
                 details.map(detail => <Detail key={detail._id} detail={detail}></Detail> )
             }
