@@ -7,6 +7,8 @@ import PerfectHome from './PerfectHome';
 import { useState } from 'react';
 import './home-pagination.css'
 import { useEffect } from 'react';
+import SharePage from '../SharePage';
+
 
 const Home = () => {
 
@@ -63,12 +65,14 @@ const Home = () => {
 
 
     return (
+       
         <div>
+            <SharePage></SharePage>
             <Banner></Banner>
             <Details></Details>
             <div className='grid grid-cols-1  md:grid-cols-2 lg:grid-cols-3 gap-6'>
                 {
-                    appartments.map(appartment => <AppartmentCard appartment={appartment} key={appartment._id}></AppartmentCard>)
+                    appartments?.map(appartment => <AppartmentCard appartment={appartment} key={appartment._id}></AppartmentCard>)
                 }
             </div>
 
@@ -95,6 +99,8 @@ const Home = () => {
             <PerfectHome></PerfectHome>
             <Map></Map>
         </div>
+       
+       
     );
 };
 

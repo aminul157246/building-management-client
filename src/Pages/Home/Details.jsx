@@ -28,7 +28,7 @@ const Details = () => {
       
            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5'>
             {
-                details.map(detail => <Detail key={detail._id} detail={detail}></Detail> )
+                details?.map(detail => <Detail key={detail._id} detail={detail}></Detail> )
             }
            </div>
 

@@ -29,6 +29,7 @@ import {
   QueryClientProvider,
 
 } from '@tanstack/react-query'
+import AnimCursor from './Pages/AnimCursor/AnimCursor';
 
 const queryClient = new QueryClient()
 
@@ -103,6 +104,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
     <QueryClientProvider client={queryClient}>
     <AuthProvider>
+      <AnimCursor></AnimCursor>
     <RouterProvider router={router} />
     </AuthProvider>
     </QueryClientProvider>

@@ -23,7 +23,7 @@ const Apartment = () => {
 
 
     return (
-        <div >
+        <div  className="">
             {
                 appartments.map(agree => <div key={agree._id}>
 
